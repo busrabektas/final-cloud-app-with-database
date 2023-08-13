@@ -49,12 +49,12 @@
                         <div class="card-body">{{lesson.content}}</div>
                     </div>
                 {% endfor %}
+         
             </div>
-
-        <button class = "btn btn-primary btn-block" data-toggle="collapse" data-target="#exam">Start</button>
+        
+                <button class = "btn btn-primary btn-block" data-toggle="collapse" data-target="#exam">Start</button>
                 <div id="exam" class = "collapse">
-                </br>
-                    { % if user.is_authenticated %}
+                    {% if user.is_authenticated %}
                     <form id="questionform" action="{% url 'onlinecourse:submit' course.id %}" method="post">
                         {% for question in course.question_set.all %}
                         <div class="card mt-1">
@@ -74,13 +74,11 @@
                             </div>
                         {% endfor %}
                         <input class="btn btn-success btn-block" type="submit" value="Submit">
-                    { % endif % }
+                    {% endif %}
 
                     </form> 
-                <div>
+                </div>
 
-            <!--Check here to see more details Bootstrap checkbox
-             https://www.w3schools.com/bootstrap4/bootstrap_forms_inputs.asp-->
-    </div>
+
 </body>
 </html>
